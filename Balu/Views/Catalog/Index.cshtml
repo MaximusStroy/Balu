@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Catalog";
+}
+
+<div class="card-columns">
+    @foreach (var product in Model.allProducts)
+    {
+        <div>
+            <div class="card" style="width: 20rem;">
+                <a asp-controller="Product" asp-route-id="@product.Id">
+                    <div class="card-img" style="background-image: url('@product.Img');"></div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">@product.Name</h5>
+                    <div class="d-flex justify-content-between">
+                        <p class="card-text align-bottom">@product.Price руб.</p>
+                        <a class="card-link align-bottom mr-0" asp-controller="Basket" asp-action="addToBasket" asp-route-id="@product.Id">
+                            <i class="bi bi-bag-plus" style="font-size: 20px;"></i>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
