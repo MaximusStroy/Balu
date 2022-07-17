@@ -48,11 +48,11 @@
                                                     @*<h6 class="text-black mb-0">Cotton T-shirt</h6>*@
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <input id="form1" min="0" name="quantity" value="1" type="number"
+                                                    <input id="form1" min="0" name="quantity" value="@el.Quantity" type="number"
                                                        class="form-control form-control-sm" />
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">@el.Product.Price.ToString("c")</h6>
+                                                    <h6 class="mb-0">@el.Quantity * @el.Product.Price</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>

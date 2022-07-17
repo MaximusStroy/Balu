@@ -2,7 +2,66 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Balu</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row">
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <img padding-top="100px" height="400" src="https://img.freepik.com/free-vector/fashion-photoshoot-concept-illustration_114360-4392.jpg?t=st=1657479042~exp=1657479642~hmac=c8cfd5806717f6489bb99b13de549047efe200f6a58fa51d399ee7f0b6467074&w=826" />
+        </div>
+        <div class="col-lg-6">
+            <div class="text-center">
+                <h1 class="align-middle text-center">Найди свой стиль</h1>
+                <a role="button" class="btn btn-outline-dark align-middle text-center" asp-controller="Catalog" asp-action="Index">Перейти в каталог</a>
+            </div>
+        </div>
+
+    </div>
+    
+    <hr class="horizontal-line">
+    <div class="row">
+        <div class="col-lg-8 col align-self-center">
+            <h2 class="mr-2">О бренде</h2>
+            <p>
+                <b>Costa Coffee</b> — британская компания, владеющая сетью кофеен, со штаб-квартирой в Данстейбле (Англия). Компания основана в 1971 году.
+                История <b>Costa Coffee</b> началась в 1971 году, когда братья Серджио и Бруно Коста приехали в Лондон. Они основали небольшую обжарочную фабрику на Фенчерч-стрит, сразу решив для себя, что будут производить кофе высшего качества.
+                Официальная история компании гласит, что в этой мастерской братья Коста протестировали 112 сортов кофе, прежде чем выбрали один, который стал фирменным блендом <b>Costa Coffee</b>. Они назвали его «Мокка Италия», и он Фирменным Блендом компании и по сей день.
+            </p>
+        </div>
+        <div class="col-lg-4 col align-self-center">
+            <img height="450" src="https://img.freepik.com/free-vector/men-style-and-fashion-abstract-concept-vector-illustration-men-tailor-shop-gentlemen-fashion-stylish-casual-clothing-menswear-model-design-course-custom-business-suite-abstract-metaphor_335657-5768.jpg?t=st=1657479984~exp=1657480584~hmac=fb45e578a0c5d2af5c62bf35f3d6bca2ce1338043459f388fd922e4ac6722116&w=826" />
+        </div>
+    </div>
+
+    <hr class="horizontal-line">
+
+    <div class="container">
+        <div class="card-columns">
+            @{
+                int i = 0;
+                foreach (var product in Model.allProducts)
+                {
+                    <div>
+                        <div class="card" style="width: 20rem;">
+                            <a asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">
+                                <div class="card-img" style="background-image: url('@product.Img');"></div>
+                            </a>
+                            <div class="card-body">
+                                <h5 class="card-title">@product.Name</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text align-bottom">@product.Price руб.</p>
+                                    <a class="card-link align-bottom mr-0" asp-controller="Basket" asp-action="addToBasket" asp-route-id="@product.Id">
+                                        <i class="bi bi-bag-plus" style="font-size: 20px;"></i>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    i++;
+                    if (i == 3) break;
+                }
+            }
+            <a role="button" class="btn btn-outline-dark text-right" asp-controller="Catalog" asp-action="Index">Просмотреть все <i class="bi bi-arrow-right"></i></a>
+
+        </div>
+    </div>
 </div>

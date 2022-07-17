@@ -43,11 +43,12 @@ namespace Balu
             services.AddControllersWithViews();
 
             services.AddTransient<ICategory, CategoryRepository>();
-            services.AddTransient<IProduct, iProduct>();
+            services.AddTransient<IProduct, ProductRepository>();
             services.AddTransient<IOrder, OrdersRepository>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(b => Basket.GetBasket(b));
+
 
             services.AddRazorPages();
 

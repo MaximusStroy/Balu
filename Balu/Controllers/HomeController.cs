@@ -1,4 +1,6 @@
-﻿using Balu.Models;
+﻿using Balu.Data.Interfaces;
+using Balu.Models;
+using Balu.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,14 +15,19 @@ namespace Balu.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IProduct _product;
+        public HomeController(ILogger<HomeController> logger, IProduct product)
         {
             _logger = logger;
+            _product = product;
         }
 
         public IActionResult Index()
         {
-            return View();
+            ProductsVM obj = new ProductsVM();
+            obj.allProducts = _product.GetAllProducts;
+            obj.currCatedory = "none category";
+            return View(obj);
         }
 
         public IActionResult Privacy()

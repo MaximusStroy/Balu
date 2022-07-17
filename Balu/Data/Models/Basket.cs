@@ -34,7 +34,8 @@ namespace Balu.Data.Models
             this.db.BasketItem.Add(new BasketItem
             {
                 BasketId = BasketId,
-                Product = product
+                Product = product,
+                Quantity = 1
             });
 
             db.SaveChanges();

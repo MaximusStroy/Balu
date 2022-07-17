@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace Balu.Data.Repository
 {
-    public class iProduct : IProduct
+    public class ProductRepository : IProduct
     {
         private readonly ApplicationDbContext db;
 
-        public iProduct(ApplicationDbContext db)
+        public ProductRepository(ApplicationDbContext db)
         {
             this.db = db;
         }
